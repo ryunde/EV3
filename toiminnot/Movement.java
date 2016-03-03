@@ -13,7 +13,7 @@ public class Movement {
 
 	public static void eteenpain() {
 		
-		Motor.A.forward(); //eteenp√§in
+		Motor.A.forward(); //eteenp‰in
 		Motor.B.forward();
 	}
 	
@@ -37,12 +37,12 @@ public class Movement {
 	
 	public static void kaantyy() {
 		
-		Motor.B.rotate(-360); // k√§√§ntyy
+		Motor.B.rotate(-360); // k‰‰ntyy
 	}
 	
 	public static void pysahtyy() {
 		
-		Motor.A.stop(); // pys√§htynyt
+		Motor.A.stop(); // pys‰htynyt
                 Motor.B.stop();
 	}
 }
