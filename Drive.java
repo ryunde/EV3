@@ -10,7 +10,7 @@ public class Drive {
 		// TODO Auto-generated method stub
 
 		LCD.clear();
-		LCD.drawString("NUU NUU", 0, 0);
+		LCD.drawString("NUU NUU", 0, 5);
 		Beep.aani();
 
 		// Get an instance of the IR EV3 sensor
