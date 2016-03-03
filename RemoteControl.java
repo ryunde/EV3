@@ -39,8 +39,6 @@ public class RemoteControl extends Thread {
                 case 8:
                 	Attack.hanta(); //häntä
             		break;
-                case 9:           	
-                	break;
                 default:
                 	Movement.pysahtyy(); //pysähtynyt
                 	
