@@ -16,7 +16,7 @@ public class RemoteControl extends Thread {
             final int remoteCommand = infraredSensor.getRemoteCommand(0);
             switch (remoteCommand){
                 case 1:
-                	Motor.A.forward(); //eteenp‰in
+                	Motor.A.forward(); //eteenp√§in
             		Motor.B.forward(); 
                     break;
                 case 2:
@@ -30,21 +30,6 @@ public class RemoteControl extends Thread {
                 case 4:
                 	Motor.A.backward(); //vasemmalle
             		Motor.B.forward();                	
-                	break;
-                case 5:
-                	Motor.C.rotate(140); //sakset
-                	break;
-                case 6:
-                	Motor.C.rotate(-140); //sakset 2
-                	break;
-                case 8:
-                	Motor.D.rotate(15); // h‰nt‰
-            		Motor.D.rotate(-15);
-            		break;
-                case 9:
-                	File music = new File("hanta.wav"); //‰‰ni
-                	Sound.playSample(music, 100);
-                	Sound.setVolume(100);                	
                 	break;
                 default:
                 	Motor.A.stop();
