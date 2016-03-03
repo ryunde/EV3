@@ -1,3 +1,10 @@
+/**
+ * Hännän ja Saksien luokka. Häntä liikkuu eteenpäin ja taaksepäin. Sakset
+ * sulkeutuvat ja aukeavat.
+ * 
+ * @author Tuhmat Teletapit
+ */
+
 package toiminnot;
 
 import lejos.hardware.motor.Motor;
