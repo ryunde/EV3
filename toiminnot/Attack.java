@@ -16,8 +16,8 @@ public class Attack {
 	
 	public static void hanta() {
 		
-		Motor.D.rotate(15); // häntä
-		Motor.D.rotate(-15);
+		Motor.D.rotate(15); // häntä eteen
+		Motor.D.rotate(-15); // h�nt� taakse
 	}
 
 }
