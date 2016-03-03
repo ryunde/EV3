@@ -1,62 +1,63 @@
-/**
- * Kauko-ohjaimen luokka, jossa sijaitsee metodi kauko-ohjaimen painettujen 
- * nappuloiden huomioiminen ja niihin reagoiminen tietyll‰ tavalla. Erilaisia
- * toimintoja on 7; eteenp‰in, taaksep‰in, oikealle ja vasemmalle k‰‰ntyminen
- * sek‰ h‰nn‰n ja saksien liikuttaminen.
- * 
- * @author Tuhmat Teletapit
- */
-
-import toiminnot.Attack;
-import toiminnot.Movement;
+import java.io.File;
 import lejos.hardware.Button;
+import lejos.hardware.motor.Motor;
 import lejos.hardware.sensor.EV3IRSensor;
-
-
+import lejos.hardware.Sound;
 public class RemoteControl extends Thread {
-
 	
-    private EV3IRSensor infraredSensor; //infrapunasensori p‰‰ss‰
+    private EV3IRSensor infraredSensor;
     
     public RemoteControl(final EV3IRSensor sensor){
         this.infraredSensor = sensor;
     }	
-
+   @Override
     public void run() {
-
-    	while(Button.ENTER.isUp()){ //sill‰ aikaa kun ENTER nappulaa ei ole painittu, seuraavat toiminnot ovat voimassa:
-            final int remoteCommand = infraredSensor.getRemoteCommand(0); //sensorin tunnistama ohjaimen painikkeen (jota on painettu) numero
+   	while(Button.ENTER.isUp()){
+            final int remoteCommand = infraredSensor.getRemoteCommand(0);
             switch (remoteCommand){
-                case 1: //painike 1 (vas.yl)
-                	Movement.eteenpain(); //eteenp‰in
+                case 1:
+                	Motor.A.forward(); //eteenp‰in
+            		Motor.B.forward(); 
                     break;
-                case 2: //painike 2 (vas.al)
-                	Movement.taaksepain(); //taaksep‰in
+                case 2:
+                	Motor.A.backward(); //peruutus
+                	Motor.B.backward();
                 	break;
-                case 3: //painike 3 (oik.yl)
-                	Movement.oikealle(); //oikealle                	
+                case 3:
+                	Motor.A.forward(); //oikealle
+            		Motor.B.backward();                	
                 	break;
-                case 4: //painike 4 (oik.al)
-                	Movement.vasemmalle(); //vasemmalle                	
+                case 4:
+                	Motor.A.backward(); //vasemmalle
+            		Motor.B.forward();                	
                 	break;
-                case 5: //painikkeet 1+3 
-                	Attack.saksetin(); //sakset sis‰‰n
+                case 5:
+                	Motor.C.rotate(140); //sakset
                 	break;
-                case 6: //painikkeet 1+4
-                	Attack.saksetout();  //sakset ulos
+                case 6:
+                	Motor.C.rotate(-140); //sakset 2
                 	break;
-                case 8: //painikkeet 2+4
-                	Attack.hanta(); //h‰nt‰
+                case 8:
+                	Motor.D.rotate(15); // h‰nt‰
+            		Motor.D.rotate(-15);
             		break;
+                case 9:
+                	File music = new File("hanta.wav"); //‰‰ni
+                	Sound.playSample(music, 100);
+                	Sound.setVolume(100);                	
+                	break;
                 default:
-                	Movement.pysahtyy(); //pys‰htynyt
+                	Motor.A.stop();
+                	Motor.B.stop();
                 	
             }
             
             
         }
     	
-
+    	while (Button.ENTER.isUp()){
+    		
+    		}
     }    
     
 }
