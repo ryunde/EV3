@@ -1,3 +1,10 @@
+/**
+ * Biippaus-luokka. Soittaa ‰‰nitiedoston ja etuk‰teen EV3-bricksin sis‰lt‰m‰n 
+ * biippausj‰rjestyksen.
+ * 
+ * @author Tuhmat Teletapit
+ */
+
 package toiminnot;
 import java.io.File;
 import lejos.hardware.Sound;
