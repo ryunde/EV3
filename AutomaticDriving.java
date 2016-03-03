@@ -1,3 +1,13 @@
+/**
+ * Toinen ohjelmaluokka, jonka toimii sovelluksena ja k‰ynnistyess‰‰n selvitt‰‰ 
+ * infrapunsasensorillaan edess‰ olevan esteen et‰isyyden ja toimii sen mukaan. 
+ * Jos ei ole estett‰ havaittavissa, robotti liikkuu eteenp‰in.
+ * Mik‰li este on liian l‰hell‰, robotti pys‰htyy, liikuttaa saksiaan, k‰‰ntyy
+ * ja jatkaa matkaa taas.
+ * 
+ * @author Tuhmat Teletapit
+ */
+
 import toiminnot.Attack;
 import toiminnot.Movement;
 import lejos.hardware.Button;
@@ -17,8 +27,8 @@ public class AutomaticDriving {
 	
 	public static void main(String[] args) {
        	
-		LCD.drawString("NUU NUU", 0, 5); //n√§ytt√∂√∂n teksti
-		Beep.aani(); //√§√§ni
+		LCD.drawString("NUU NUU", 0, 5); //ruudulle teksti
+		Beep.aani(); //‰‰ni
         
         
         Port port = LocalEV3.get().getPort("S1"); // portti instanssin haku
