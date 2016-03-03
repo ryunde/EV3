@@ -1,9 +1,9 @@
 /**
  * Robotti NuuNuu
- * P‰‰ohjelmaluokka Drive, jossa main metodin myˆt‰ luokka voidaan suorittaa 
+ * P√§√§ohjelmaluokka Drive, jossa main metodin my√∂t√§ luokka voidaan suorittaa 
  * sovelluksena.
- * Suorittaessa robotin ruudulle ilmestyy teksti‰ ja kuuluu ‰‰ni.
- * Infrapunasensorin ja ohjaimen m‰‰rittely, jotta kauko-ohjaimesta tulevat
+ * Suorittaessa robotin ruudulle ilmestyy teksti√§ ja kuuluu √§√§ni.
+ * Infrapunasensorin ja ohjaimen m√§√§rittely, jotta kauko-ohjaimesta tulevat
  * kommennot voidaan lukea.
  * 
  * @author Tuhmat Teletapit
@@ -17,14 +17,10 @@ import lejos.hardware.sensor.EV3IRSensor;
 public class Drive {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		LCD.clear(); 
 		LCD.drawString("NUU NUU", 0, 5);//kirjottaa ruutuun NUU NUU
-		Beep.aani(); // pit‰‰ beep ‰‰nen
-
-		// Get an instance of the IR EV3 sensor
-		
+		Beep.aani(); // pit√§√§ beep √§√§nen
 		
 		final EV3IRSensor infraredSensor = new EV3IRSensor(SensorPort.S1); // infrapuna EV3 sensori-instanssi
 
