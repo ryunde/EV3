@@ -9,6 +9,7 @@ import lejos.hardware.sensor.SensorModes;
 import lejos.robotics.SampleProvider;
 import lejos.robotics.filter.MeanFilter;
 import lejos.utility.Delay;
+import toiminnot.Beep;
 
 public class AutomaticDriving {
 	
@@ -16,7 +17,8 @@ public class AutomaticDriving {
 	
 	public static void main(String[] args) {
        	
-		LCD.drawString("NUU NUU", 0, 5); //n‰yttˆˆn teksti
+		LCD.drawString("NUU NUU", 0, 5); //n√§ytt√∂√∂n teksti
+		Beep.aani(); //√§√§ni
         
         
         Port port = LocalEV3.get().getPort("S1"); // portti instanssin haku
@@ -29,28 +31,28 @@ public class AutomaticDriving {
         	
         	Delay.msDelay(2000);
         	
-        	Movement.eteenpain(); // ajaa eteenp‰in automaattisesti
+        	Movement.eteenpain(); // ajaa eteenp√§in automaattisesti
         	
-        	SampleProvider average = new MeanFilter(distance, 2); // kasataan filter sensorin p‰‰lle joka antaa viimeisimm‰n kahden n‰ytteen keskiarvon
-        	float[] sample = new float[average.sampleSize()]; // alustetaan n‰yte-array
-        	average.fetchSample(sample, 0); // haetaan n‰yte
+        	SampleProvider average = new MeanFilter(distance, 2); // kasataan filter sensorin p√§√§lle joka antaa viimeisimm√§n kahden n√§ytteen keskiarvon
+        	float[] sample = new float[average.sampleSize()]; // alustetaan n√§yte-array
+        	average.fetchSample(sample, 0); // haetaan n√§yte
         	
-        	int dist = (int) sample[0]; // aloitus-n‰yte
+        	int dist = (int) sample[0]; // aloitus-n√§yte
         	
-        	while (dist < 35 && Button.ENTER.isUp()) { // mik‰li et‰isyys on alle 35, ja ENTER nappulaa ei edelleenk‰‰n painettu, seuraavat kommenot tapahtuvat:
+        	while (dist < 35 && Button.ENTER.isUp()) { // mik√§li et√§isyys on alle 35, ja ENTER nappulaa ei edelleenk√§√§n painettu, seuraavat kommenot tapahtuvat:
         		
-        		Movement.pysahtyy(); // pys‰htyy
+        		Movement.pysahtyy(); // pys√§htyy
         		Attack.saksetin(); // sakset kiinni
         		Attack.saksetout(); // sakset auki
-        		Movement.kaantyy(); // k‰‰ntyy
+        		Movement.kaantyy(); // k√§√§ntyy
             	            	            	            	
-            	average = new MeanFilter(distance, 2); // kasataan filter sensorin p‰‰lle taas
+            	average = new MeanFilter(distance, 2); // kasataan filter sensorin p√§√§lle taas
             	
-            	sample = new float[average.sampleSize()]; // alustetaan n‰yte-array
+            	sample = new float[average.sampleSize()]; // alustetaan n√§yte-array
             	
-            	average.fetchSample(sample, 0); // haetaan n‰yte
+            	average.fetchSample(sample, 0); // haetaan n√§yte
             	            	            	
-            	dist = (int) sample[0]; // aloitus-n‰yte
+            	dist = (int) sample[0]; // aloitus-n√§yte
             	
             }
         }
