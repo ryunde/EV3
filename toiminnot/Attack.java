@@ -6,7 +6,7 @@ public class Attack {
 	
 	public static void saksetin() {
 		
-		Motor.C.rotate(140); //sakset sis√§√§n
+		Motor.C.rotate(140); //sakset sis‰‰n
 	}
 	
 	public static void saksetout() {
@@ -16,7 +16,7 @@ public class Attack {
 	
 	public static void hanta() {
 		
-		Motor.D.rotate(15); // h√§nt√§ eteen
+		Motor.D.rotate(15); // h‰nt‰ eteen
 		Motor.D.rotate(-15); // h‰nt‰ taakse
 	}
 
