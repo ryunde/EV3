@@ -12,7 +12,7 @@ public class Movement {
 	public static void taaksepain() {
 		
 		Motor.A.backward(); //peruutus
-    	Motor.B.backward();
+                Motor.B.backward();
 	}
 	
 	public static void oikealle() {
