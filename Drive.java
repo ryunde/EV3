@@ -1,3 +1,9 @@
+/**
+ * Robotti NuuNuu
+ * Pääohjelmaluokka Drive, jossa main metodin myötä luokka voidaan suorittaa sovelluksena.
+ * 
+ * @author Tuhmat Teletapit
+ */
 
 import toiminnot.Beep;
 import lejos.hardware.lcd.LCD;
