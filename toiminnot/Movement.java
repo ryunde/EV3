@@ -35,6 +35,6 @@ public class Movement {
 	public static void pysahtyy() {
 		
 		Motor.A.stop(); // pysähtynyt
-    	Motor.B.stop();
+                Motor.B.stop();
 	}
 }
