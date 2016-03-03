@@ -1,3 +1,12 @@
+/**
+ * Kauko-ohjaimen luokka, jossa sijaitsee metodi kauko-ohjaimen painettujen 
+ * nappuloiden huomioiminen ja niihin reagoiminen tietyll‰ tavalla. Erilaisia
+ * toimintoja on 7; eteenp‰in, taaksep‰in, oikealle ja vasemmalle k‰‰ntyminen
+ * sek‰ h‰nn‰n ja saksien liikuttaminen.
+ * 
+ * @author Tuhmat Teletapit
+ */
+
 import toiminnot.Attack;
 import toiminnot.Movement;
 import lejos.hardware.Button;
