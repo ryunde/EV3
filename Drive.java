@@ -2,6 +2,9 @@
  * Robotti NuuNuu
  * P‰‰ohjelmaluokka Drive, jossa main metodin myˆt‰ luokka voidaan suorittaa 
  * sovelluksena.
+ * Suorittaessa robotin ruudulle ilmestyy teksti‰ ja kuuluu ‰‰ni.
+ * Infrapunasensorin ja ohjaimen m‰‰rittely, jotta kauko-ohjaimesta tulevat
+ * kommennot voidaan lukea.
  * 
  * @author Tuhmat Teletapit
  */
