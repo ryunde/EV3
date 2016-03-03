@@ -49,7 +49,7 @@ public class AutomaticDriving {
         	
         	int dist = (int) sample[0]; // aloitus-näyte
         	
-        	while (dist < 35 && Button.ENTER.isUp()) { // mikÃ¤li etäisyys on alle 35, ja ENTER nappulaa ei edelleenkään painettu, seuraavat kommenot tapahtuvat:
+        	while (dist < 35 && Button.ENTER.isUp()) { // mikäli etäisyys on alle 35, ja ENTER nappulaa ei edelleenkään painettu, seuraavat kommenot tapahtuvat:
         		
         		Movement.pysahtyy(); // pysähtyy
         		Attack.saksetin(); // sakset kiinni
