@@ -1,3 +1,11 @@
+/**
+ * Liikkumismetodit:
+ * Eteenp‰in, peruutus, oikealle ja vasemmalle k‰‰ntyminen, 360∞ k‰‰ntyminen,
+ * pys‰htyminen.
+ * 
+ * @author Tuhmat Teletapit
+ */
+
 package toiminnot;
 import lejos.hardware.motor.Motor;
 
