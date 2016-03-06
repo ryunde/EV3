@@ -7,6 +7,8 @@ public class Drive {
 		LCD.clear();
 		LCD.drawString("NUU NUU", 0, 0);
 		// Get an instance of the IR EV3 sensor
+		
+		
 		final EV3IRSensor infraredSensor = new EV3IRSensor(SensorPort.S1);
 		RemoteControl checkerThread = new RemoteControl(
 				infraredSensor);
