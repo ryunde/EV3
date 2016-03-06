@@ -1,6 +1,8 @@
+import java.io.File;
 import lejos.hardware.Button;
 import lejos.hardware.motor.Motor;
 import lejos.hardware.sensor.EV3IRSensor;
+import lejos.hardware.Sound;
 public class RemoteControl extends Thread {
 	
     private EV3IRSensor infraredSensor;
@@ -33,17 +35,20 @@ public class RemoteControl extends Thread {
                 	Motor.C.rotate(140); //sakset
                 	break;
                 case 6:
-                	Motor.C.rotate(-140);
+                	Motor.C.rotate(-140); //sakset 2
                 	break;
                 case 8:
                 	Motor.D.rotate(15); // h‰nt‰
             		Motor.D.rotate(-15);
             		break;
                 case 9:
-                	Motor.A.stop(); //pys‰hdys
-            		Motor.B.stop();                	
+                	File music = new File("hanta.wav"); //‰‰ni
+                	Sound.playSample(music, 100);
+                	Sound.setVolume(100);                	
                 	break;
                 default:
+                	Motor.A.stop();
+                	Motor.B.stop();
                 	
             }
             
