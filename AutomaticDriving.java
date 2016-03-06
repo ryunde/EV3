@@ -9,6 +9,7 @@ import lejos.robotics.SampleProvider;
 import lejos.robotics.filter.MeanFilter;
 import lejos.utility.Delay;
 public class AutomaticDriving {
+	
 	private static SensorModes sensor;
 	public static void main(String[] args) {
 	// TODO Auto-generated method stub
@@ -40,9 +41,11 @@ public class AutomaticDriving {
         	
         	int dist = (int) sample[0];
         	
-        	while (dist < 35 && Button.ENTER.isUp()) {
-        		Motor.A.backward();
-        		Motor.B.backward();
+        	while (dist < 40 && Button.ENTER.isUp()) {
+        		
+        		Motor.C.rotate(120);
+        		Motor.C.rotate(-120);
+        		Motor.B.rotate(-360);
             	            	            	            	
             	// stack a filter on the sensor that gives the running average of the last 5 samples
             	average = new MeanFilter(distance, 5);
