@@ -1,68 +1,59 @@
-/**
- * Toinen ohjelmaluokka, jonka toimii sovelluksena ja k‰ynnistyess‰‰n selvitt‰‰ 
- * infrapunsasensorillaan edess‰ olevan esteen et‰isyyden ja toimii sen mukaan. 
- * Jos ei ole estett‰ havaittavissa, robotti liikkuu eteenp‰in.
- * Mik‰li este on liian l‰hell‰, robotti pys‰htyy, liikuttaa saksiaan, k‰‰ntyy
- * ja jatkaa matkaa taas.
- * 
- * @author Tuhmat Teletapit
- */
-
-import toiminnot.Attack;
-import toiminnot.Movement;
 import lejos.hardware.Button;
 import lejos.hardware.ev3.LocalEV3;
 import lejos.hardware.lcd.LCD;
+import lejos.hardware.motor.Motor;
 import lejos.hardware.port.Port;
 import lejos.hardware.sensor.EV3IRSensor;
 import lejos.hardware.sensor.SensorModes;
 import lejos.robotics.SampleProvider;
 import lejos.robotics.filter.MeanFilter;
 import lejos.utility.Delay;
-import toiminnot.Beep;
-
 public class AutomaticDriving {
-	
-	private static SensorModes sensor; // sensori
-	
+	private static SensorModes sensor;
 	public static void main(String[] args) {
+	// TODO Auto-generated method stub
        	
-		LCD.drawString("NUU NUU", 0, 5); //ruudulle teksti
-		Beep.aani(); //‰‰ni
+	LCD.clear();
+        LCD.drawString("NUU NUU", 0, 5);
         
+	// get a port instance
+        Port port = LocalEV3.get().getPort("S1");
         
-        Port port = LocalEV3.get().getPort("S1"); // portti instanssin haku
+        sensor = new EV3IRSensor(port);
         
-        sensor = new EV3IRSensor(port); // uusi sensori
+        // get an instance of this sensor in measurement mode
+        SampleProvider distance= sensor.getMode("Distance");
         
-        SampleProvider distance= sensor.getMode("Distance"); // hae kyseisen sensorin instanssi mittaus-muodossa !
-        
-        while (Button.ENTER.isUp()) { // kun painaa ENTER ohjelma loppuu -> muuten tulevat komennot ovat toiminnassa
+        while (Button.ENTER.isUp()) {
         	
         	Delay.msDelay(2000);
         	
-        	Movement.eteenpain(); // ajaa eteenp‰in automaattisesti
+        	Motor.A.forward();
+    		Motor.B.forward();
         	
-        	SampleProvider average = new MeanFilter(distance, 2); // kasataan filter sensorin p‰‰lle joka antaa viimeisimm‰n kahden n‰ytteen keskiarvon
-        	float[] sample = new float[average.sampleSize()]; // alustetaan n‰yte-array
-        	average.fetchSample(sample, 0); // haetaan n‰yte
+        	// stack a filter on the sensor that gives the running average of the last 5 samples
+        	SampleProvider average = new MeanFilter(distance, 5);
+        	// initialize an array of floats for fetching samples
+        	float[] sample = new float[average.sampleSize()];
+        	// fetch a sample
+        	average.fetchSample(sample, 0);
         	
-        	int dist = (int) sample[0]; // aloitus-n‰yte
+        	int dist = (int) sample[0];
         	
-        	while (dist < 35 && Button.ENTER.isUp()) { // mik‰li et‰isyys on alle 35, ja ENTER nappulaa ei edelleenk‰‰n painettu, seuraavat kommenot tapahtuvat:
-        		
-        		Movement.pysahtyy(); // pys‰htyy
-        		Attack.saksetin(); // sakset kiinni
-        		Attack.saksetout(); // sakset auki
-        		Movement.kaantyy(); // k‰‰ntyy
+        	while (dist < 35 && Button.ENTER.isUp()) {
+        		Motor.A.backward();
+        		Motor.B.backward();
             	            	            	            	
-            	average = new MeanFilter(distance, 2); // kasataan filter sensorin p‰‰lle taas
+            	// stack a filter on the sensor that gives the running average of the last 5 samples
+            	average = new MeanFilter(distance, 5);
             	
-            	sample = new float[average.sampleSize()]; // alustetaan n‰yte-array
+            	// initialize an array of floats for fetching samples
+            	sample = new float[average.sampleSize()];
             	
-            	average.fetchSample(sample, 0); // haetaan n‰yte
+            	// fetch a sample
+            	average.fetchSample(sample, 0);
             	            	            	
-            	dist = (int) sample[0]; // aloitus-n‰yte
+            	dist = (int) sample[0];
             	
             }
         }
