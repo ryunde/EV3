@@ -15,31 +15,44 @@ public class RemoteControl extends Thread {
             switch (remoteCommand){
                 case 1:
                 	Motor.A.forward(); //eteenpäin
-            		Motor.B.forward();                	
+            		Motor.B.forward(); 
                     break;
                 case 2:
-                	Motor.C.rotate(120); //sakset
-                	Motor.C.setSpeed(3000);
-                	Motor.C.rotate(-120);
+                	Motor.A.backward(); //peruutus
+                	Motor.B.backward();
                 	break;
                 case 3:
                 	Motor.A.forward(); //oikealle
-            		Motor.B.stop();                	
+            		Motor.B.backward();                	
                 	break;
                 case 4:
-                	Motor.A.stop(); //vasemmalle
+                	Motor.A.backward(); //vasemmalle
             		Motor.B.forward();                	
                 	break;
+                case 5:
+                	Motor.C.rotate(140); //sakset
+                	break;
+                case 6:
+                	Motor.C.rotate(-140);
+                	break;
                 case 8:
-                	Motor.A.backward(); //peruutus
-                	Motor.B.backward();
+                	Motor.D.rotate(15); // häntä
+            		Motor.D.rotate(-15);
+            		break;
                 case 9:
                 	Motor.A.stop(); //pysähdys
             		Motor.B.stop();                	
                 	break;
                 default:
+                	
             }
+            
+            
         }
+    	
+    	while (Button.ENTER.isUp()){
+    		
+    		}
     }    
     
 }
