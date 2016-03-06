@@ -10,53 +10,45 @@ import lejos.robotics.filter.MeanFilter;
 import lejos.utility.Delay;
 public class AutomaticDriving {
 	
-	private static SensorModes sensor;
+	private static SensorModes sensor; // sensori
+	
 	public static void main(String[] args) {
-	// TODO Auto-generated method stub
        	
 	LCD.clear();
-        LCD.drawString("NUU NUU", 0, 5);
+        LCD.drawString("NUU NUU", 0, 5); //n‰yttˆˆn teksti
         
-	// get a port instance
-        Port port = LocalEV3.get().getPort("S1");
+        Port port = LocalEV3.get().getPort("S1"); // portti instanssin haku
         
-        sensor = new EV3IRSensor(port);
+        sensor = new EV3IRSensor(port); // uusi sensori
         
-        // get an instance of this sensor in measurement mode
-        SampleProvider distance= sensor.getMode("Distance");
+        SampleProvider distance= sensor.getMode("Distance"); // hae kyseisen sensorin instanssi mittaus-muodossa !
         
-        while (Button.ENTER.isUp()) {
+        while (Button.ENTER.isUp()) { // kun painaa ENTER ohjelma loppuu -> muuten tulevat komennot ovat toiminnassa
         	
         	Delay.msDelay(2000);
         	
-        	Motor.A.forward();
+        	Motor.A.forward(); // ajaa eteenp‰in automaattisesti
     		Motor.B.forward();
         	
-        	// stack a filter on the sensor that gives the running average of the last 5 samples
-        	SampleProvider average = new MeanFilter(distance, 5);
-        	// initialize an array of floats for fetching samples
-        	float[] sample = new float[average.sampleSize()];
-        	// fetch a sample
-        	average.fetchSample(sample, 0);
+        	SampleProvider average = new MeanFilter(distance, 5); // kasataan filter sensorin p‰‰lle joka antaa viimeisimm‰n viiden n‰ytteen keskiarvon
+        	float[] sample = new float[average.sampleSize()]; // alustetaan n‰yte-array
+        	average.fetchSample(sample, 0); // haetaan n‰yte
         	
-        	int dist = (int) sample[0];
+        	int dist = (int) sample[0]; // aloitus-n‰yte
         	
-        	while (dist < 40 && Button.ENTER.isUp()) {
+        	while (dist < 35 && Button.ENTER.isUp()) { // mik‰li et‰isyys on alle 40, ja ENTER nappulaa ei edelleenk‰‰n painettu, seuraavat kommenot tapahtuvat:
         		
-        		Motor.C.rotate(120);
-        		Motor.C.rotate(-120);
-        		Motor.B.rotate(-360);
+        		Motor.C.rotate(120); // sakset kiinni
+        		Motor.C.rotate(-120); // sakset auki
+        		Motor.B.rotate(-360); // k‰‰ntyy
             	            	            	            	
-            	// stack a filter on the sensor that gives the running average of the last 5 samples
-            	average = new MeanFilter(distance, 5);
+            	average = new MeanFilter(distance, 5); // kasataan filter sensorin p‰‰lle taas
             	
-            	// initialize an array of floats for fetching samples
-            	sample = new float[average.sampleSize()];
+            	sample = new float[average.sampleSize()]; // alustetaan n‰yte-array
             	
-            	// fetch a sample
-            	average.fetchSample(sample, 0);
+            	average.fetchSample(sample, 0); // haetaan n‰yte
             	            	            	
-            	dist = (int) sample[0];
+            	dist = (int) sample[0]; // aloitus-n‰yte
             	
             }
         }

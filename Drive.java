@@ -1,3 +1,5 @@
+import java.io.File;
+import lejos.hardware.Sound;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3IRSensor;
@@ -6,6 +8,11 @@ public class Drive {
 		// TODO Auto-generated method stub
 		LCD.clear();
 		LCD.drawString("NUU NUU", 0, 0);
+		
+		File music = new File("hanta2.wav"); //‰‰ni
+    	Sound.playSample(music, 100);
+    	Sound.setVolume(100);
+    	Sound.beepSequence();
 		// Get an instance of the IR EV3 sensor
 		
 		
@@ -13,5 +20,7 @@ public class Drive {
 		RemoteControl checkerThread = new RemoteControl(
 				infraredSensor);
 		checkerThread.start();
+		
+		
 	}
 }
