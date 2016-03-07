@@ -1,5 +1,5 @@
 /**
- * Toinen ohjelmaluokka, jonka toimii sovelluksena ja k‰ynnistyess‰‰n selvitt‰‰ 
+ * Toinen ohjelmaluokka, joka toimii sovelluksena ja k‰ynnistyess‰‰n selvitt‰‰ 
  * infrapunsasensorillaan edess‰ olevan esteen et‰isyyden ja toimii sen mukaan. 
  * Jos ei ole estett‰ havaittavissa, robotti liikkuu eteenp‰in.
  * Mik‰li este on liian l‰hell‰, robotti pys‰htyy, liikuttaa saksiaan, k‰‰ntyy
