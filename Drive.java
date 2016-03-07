@@ -2,7 +2,7 @@
 /**
  * Robotti NuuNuu
  * Pääohjelmaluokka Drive, jossa main metodin myötä luokka voidaan suorittaa
- * sovelluksena. Infrapunasensorin ja ohjaimen määrittely, jotta kauko-ohjaimesta 
+ * sovelluksena. Infrapunasensorin ja ohjaimen määrittely/luonti, jotta kauko-ohjaimesta 
  * tulevat kommennot voidaan lukea.
  *
  * @author Tuhmat Teletapit
