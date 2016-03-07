@@ -1,10 +1,10 @@
 
 /**
- * Toinen ohjelmaluokka, joka toimii sovelluksena ja k‰ynnistyess‰‰n selvitt‰‰
- * infrapunsasensorillaan edess‰ olevan esteen et‰isyyden ja toimii sen mukaan.
- * Jos ei ole estett‰ havaittavissa, robotti liikkuu eteenp‰in.
- * Mik‰li este on liian l‰hell‰, robotti pys‰htyy, v‰lkytt‰‰ punaista valoa,
- * liikuttaa saksiaan, k‰‰ntyy ja jatkaa matkaa taas.
+ * Toinen ohjelmaluokka, joka toimii sovelluksena ja k√§ynnistyess√§√§n selvitt√§√§
+ * infrapunsasensorillaan edess√§ olevan esteen et√§isyyden ja toimii sen mukaan.
+ * Jos ei ole estett√§ havaittavissa, robotti liikkuu eteenp√§in.
+ * Mik√§li este on liian l√§hell√§, robotti pys√§htyy, v√§lkytt√§√§ punaista valoa,
+ * pit√§√§ √§√§nen, liikuttaa saksiaan, k√§√§ntyy ja jatkaa matkaa taas.
  *
  * @author Tuhmat Teletapit
  */
@@ -28,7 +28,7 @@ public class AutomaticDriving {
     public static void main(String[] args) {
 
         LCD.drawString("NUU NUU", 0, 5); //ruudulle teksti
-        Beep.aani(); //‰‰ni
+        Beep.aani(); //√§√§ni
 
         Port port = LocalEV3.get().getPort("S1"); // portti instanssin haku
 
@@ -40,30 +40,30 @@ public class AutomaticDriving {
 
             Delay.msDelay(2000);
 
-            Movement.eteenpain(); // ajaa eteenp‰in automaattisesti
+            Movement.eteenpain(); // ajaa eteenp√§in automaattisesti
 
-            SampleProvider average = new MeanFilter(distance, 2); // kasataan filter sensorin p‰‰lle joka antaa viimeisimm‰n kahden n‰ytteen keskiarvon
-            float[] sample = new float[average.sampleSize()]; // alustetaan n‰yte-array
-            average.fetchSample(sample, 0); // haetaan n‰yte
+            SampleProvider average = new MeanFilter(distance, 2); // kasataan filter sensorin p√§√§lle joka antaa viimeisimm√§n kahden n√§ytteen keskiarvon
+            float[] sample = new float[average.sampleSize()]; // alustetaan n√§yte-array
+            average.fetchSample(sample, 0); // haetaan n√§yte
 
-            int dist = (int) sample[0]; // aloitus-n‰yte
+            int dist = (int) sample[0]; // aloitus-n√§yte
 
-            while (dist < 35 && Button.ENTER.isUp()) { // mik‰li et‰isyys on alle 35, ja ENTER nappulaa ei edelleenk‰‰n painettu, seuraavat kommenot tapahtuvat:
+            while (dist < 35 && Button.ENTER.isUp()) { // mik√§li et√§isyys on alle 35, ja ENTER nappulaa ei edelleenk√§√§n painettu, seuraavat kommenot tapahtuvat:
 
-                Movement.pysahtyy(); // pys‰htyy
-                Beep.aani2(); //‰‰ni
-                Attack.punainen(); // punainen v‰lkkyv‰ valo
+                Movement.pysahtyy(); // pys√§htyy
+                Beep.aani2(); //√§√§ni
+                Attack.punainen(); // punainen v√§lkkyv√§ valo
                 Attack.saksetin(); // sakset kiinni
                 Attack.saksetout(); // sakset auki
-                Movement.kaantyy(); // k‰‰ntyy
+                Movement.kaantyy(); // k√§√§ntyy
 
-                average = new MeanFilter(distance, 2); // kasataan filter sensorin p‰‰lle taas
+                average = new MeanFilter(distance, 2); // kasataan filter sensorin p√§√§lle taas
 
-                sample = new float[average.sampleSize()]; // alustetaan n‰yte-array
+                sample = new float[average.sampleSize()]; // alustetaan n√§yte-array
 
-                average.fetchSample(sample, 0); // haetaan n‰yte
+                average.fetchSample(sample, 0); // haetaan n√§yte
 
-                dist = (int) sample[0]; // aloitus-n‰yte
+                dist = (int) sample[0]; // aloitus-n√§yte
 
             }
         }
