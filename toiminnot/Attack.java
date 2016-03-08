@@ -1,6 +1,6 @@
 /**
- * H‰nn‰n ja Saksien sek‰ valon v‰l‰ytyksen luokka. H‰nt‰ liikkuu eteenp‰in ja
- * taaksep‰in. Sakset sulkeutuvat ja aukeavat. Punainen vilkkuva valo ja valot pois.
+ * H√§nn√§n ja Saksien sek√§ valon v√§l√§ytyksen luokka. H√§nt√§ liikkuu eteenp√§in ja
+ * taaksep√§in. Sakset sulkeutuvat ja aukeavat. Punainen vilkkuva valo ja valot pois.
  *
  * @author Tuhmat Teletapit
  */
@@ -13,7 +13,7 @@ public class Attack {
 
     public static void saksetin() {
 
-        Motor.C.rotate(140); //sakset sis‰‰n
+        Motor.C.rotate(140); //sakset sis√§√§n
     }
 
     public static void saksetout() {
@@ -23,15 +23,15 @@ public class Attack {
 
     public static void hanta() {
 
-        Motor.D.rotate(15); // h‰nt‰ eteen
-        Motor.D.rotate(-15); // h‰nt‰ taakse
+        Motor.D.rotate(15); // h√§nt√§ eteen
+        Motor.D.rotate(-15); // h√§nt√§ taakse
     }
 
-    public static void punainen() {
+    public static void punainen() { //punainen valo vilkkuu
         Button.LEDPattern(8);
     }
 
-    public static void valopois() {
+    public static void valopois() { //mik√§√§n led-valo ei loista
         Button.LEDPattern(0);
     }
 
